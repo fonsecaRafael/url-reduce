@@ -1,5 +1,8 @@
 from django.shortcuts import redirect, render
 
+from reducer.shorter.models import UrlRedirect
+
 
 def redirecter(request, slug):
-    return redirect('http://google.com')
+    url_redirect = UrlRedirect.objects.get(slug=slug)
+    return redirect(url_redirect.destiny)
